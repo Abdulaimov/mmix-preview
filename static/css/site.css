@@ -375,11 +375,12 @@ input[type=checkbox], input[type=radio] { width: 20px; height: 20px; accent-colo
 .pagehead h1 { margin: 0; }
 .pagehead .lead, .pagehead .note { flex-basis: 100%; margin: 0; }
 .catalog { display: grid; gap: 16px; padding-bottom: 48px; }
-@media (min-width: 980px) { .catalog { grid-template-columns: 270px 1fr; gap: 28px; align-items: start; } .catalog--nofilters { grid-template-columns: 1fr; } }
+@media (min-width: 980px) { .catalog { grid-template-columns: 282px 1fr; gap: 28px; align-items: start; } .catalog--nofilters { grid-template-columns: 1fr; } }
 .fpanel__toggle { width: 100%; }
 .fpanel__body { margin-top: 12px; }
 @media (min-width: 980px) {
-  .fpanel { position: sticky; top: 150px; max-height: calc(100vh - 170px); overflow: auto; padding-right: 4px; }
+  /* Справа поле под полосу прокрутки: в Safari она рисуется поверх и закрывала цифры у фильтров */
+  .fpanel { position: sticky; top: 150px; max-height: calc(100vh - 170px); overflow: auto; padding-right: 16px; scrollbar-width: thin; scrollbar-color: var(--line-2) transparent; }
   .fpanel__toggle { display: none; }
   .fpanel__body { margin: 0; display: block !important; }
 }
