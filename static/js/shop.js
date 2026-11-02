@@ -224,21 +224,6 @@ const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
     });
     hero.addEventListener('pointerleave', () => { hero.style.setProperty('--mx', '0'); hero.style.setProperty('--my', '0'); });
   }
-  hero.querySelectorAll('[data-count]').forEach((node) => {
-    const el = /** @type {HTMLElement} */ (node);
-    const to = Number(el.dataset.count);
-    if (!to) return;
-    el.textContent = '0';
-    setTimeout(() => {
-      const t0 = performance.now();
-      const step = (/** @type {number} */ now) => {
-        const p = Math.min(1, (now - t0) / 900);
-        el.textContent = String(Math.round(to * (1 - (1 - p) ** 3)));
-        if (p < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    }, 700);
-  });
 })();
 
 // ---- Метки рекламы и источник первого визита (уходят в заказ, без личных данных) ----

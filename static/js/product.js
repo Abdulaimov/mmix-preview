@@ -23,6 +23,9 @@ buybox?.querySelectorAll('input[name=variant]').forEach((el) => el.addEventListe
   if (unconfirmed) /** @type {HTMLElement} */ (unconfirmed).hidden = d.vConfirmed === '1';
   const priceBox = document.querySelector('[data-price-box] .price__val');
   if (priceBox && d.vPrice) priceBox.textContent = money(Number(d.vPrice));
+  // Подпись «за ведро 5 кг» — своя у каждой фасовки
+  const perBox = document.querySelector('[data-price-box] .price__unit');
+  if (perBox && d.vPer) perBox.textContent = d.vPer;
   const sticky = document.querySelector('[data-sticky-price]');
   if (sticky) sticky.textContent = d.vPrice ? money(Number(d.vPrice)) : t('js.price_on_request');
   const url = new URL(location.href);
