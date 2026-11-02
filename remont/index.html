@@ -1,0 +1,306 @@
+<!doctype html><html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Калькулятор ремонта — m.mix</title>
+<meta name="description" content="Калькулятор ремонта m.mix: размеры комнаты → список материалов с количеством мешков по данным производителя. Ванная, пол, стены.">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="alternate" hreflang="ru" href="https://abdulaimov.github.io/mmix-preview/remont">
+<link rel="alternate" hreflang="tg" href="https://abdulaimov.github.io/mmix-preview/tg/remont">
+<link rel="alternate" hreflang="x-default" href="https://abdulaimov.github.io/mmix-preview/remont">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="m.mix">
+<meta property="og:title" content="Калькулятор ремонта — m.mix">
+<meta property="og:description" content="Калькулятор ремонта m.mix: размеры комнаты → список материалов с количеством мешков по данным производителя. Ванная, пол, стены.">
+<meta property="og:url" content="https://abdulaimov.github.io/mmix-preview/remont">
+<meta property="og:image" content="https://abdulaimov.github.io/mmix-preview/static/img/og.png">
+<meta property="og:locale" content="ru_RU">
+<meta name="theme-color" content="#0150AC">
+<link rel="icon" href="/mmix-preview/static/img/mmix_mark_blue.svg" type="image/svg+xml">
+<link rel="preload" href="/mmix-preview/static/fonts/Onest-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/mmix-preview/static/fonts/Onest-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/mmix-preview/static/css/site.css?v=mvyp31wo">
+
+</head>
+<body class="page-remont" data-lang="ru" data-base="/mmix-preview" data-root="/mmix-preview" data-preview="1"><div class="demo-ribbon" role="note" style="background:#0E1A2B;color:#fff;font:500 13px/1.45 Onest,system-ui,sans-serif;text-align:center;padding:9px 16px">Демо-версия для согласования дизайна. Цены временные, заказы и заявки отсюда не отправляются.</div>
+<a class="skip" href="#main">Перейти к содержимому</a>
+<div class="topbar"><div class="wrap topbar__in">
+  <span class="topbar__city">Душанбе, Таджикистан</span>
+  <a href="tel:+992000004145"><svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg> +992 00 000 41 45</a>
+  <a href="https://wa.me/992000004145" rel="noopener" target="_blank"><svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c0 2.5 2.5 5 5 5l1.2-1.2-1.7-1-1 .6a3.5 3.5 0 0 1-2-2l.6-1-1-1.7z"/></svg> WhatsApp</a>
+  <span class="topbar__sp"></span>
+  <a class="topbar__free" href="/mmix-preview/delivery/"><svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg> Бесплатная доставка по Душанбе</a>
+  <a href="/mmix-preview/delivery/">Доставка и оплата</a>
+  <a href="/mmix-preview/contacts/">Контакты</a>
+</div></div>
+<header class="hdr" id="top">
+  <div class="wrap hdr__in">
+    <details class="menu" data-menu>
+      <summary class="iconbtn" aria-label="Меню"><svg class="i" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+      <nav class="menu__panel" aria-label="Меню">
+        <a class="menu__item menu__item--strong" href="/mmix-preview/catalog/">Все товары</a>
+        <a class="menu__item" href="/mmix-preview/catalog/plitochnye-klei/">Плиточные клеи</a><a class="menu__item" href="/mmix-preview/catalog/shpaklevki-i-shtukaturki/">Шпаклёвки и штукатурки</a><a class="menu__item" href="/mmix-preview/catalog/gruntovka-i-gidroizolyaciya/">Грунтовка и гидроизоляция</a><a class="menu__item" href="/mmix-preview/catalog/zatirka/">Затирка</a>
+        <hr>
+        <a class="menu__item menu__item--strong" href="/mmix-preview/remont/"><svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"/></svg> Калькулятор ремонта</a>
+        <a class="menu__item" href="/mmix-preview/masters/"><svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.5 6.5a4 4 0 0 0 5 5L21 13l-8 8-3-3 8-8z"/><path d="M3 21l6-6"/></svg> Мастерам</a>
+        <a class="menu__item" href="/mmix-preview/compare/"><svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 4v16M16 4v16M4 8h8M12 16h8"/></svg> Сравнение</a>
+        <a class="menu__item" href="/mmix-preview/about/">О компании</a>
+        <a class="menu__item" href="/mmix-preview/delivery/">Доставка и оплата</a>
+        <a class="menu__item" href="/mmix-preview/contacts/">Контакты</a>
+        <div class="lang menu__lang" role="group" aria-label="Язык сайта">
+    <svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+    <a href="/mmix-preview/remont/" hreflang="ru" lang="ru" aria-current="true" class="is-active">Русский</a>
+    <a href="/mmix-preview/tg/remont/" hreflang="tg" lang="tg" >Тоҷикӣ</a>
+  </div>
+      </nav>
+    </details>
+    <a class="hdr__logo" href="/mmix-preview/" aria-label="Главная"><svg class="logo" viewBox="0 -56.8 692.74 190.8" role="img" aria-label="m.mix"><g fill="#0150AC"><path d="M0 134V58A60 60 0 0 1 120 58V134H80V58A20 20 0 0 0 40 58V134Z"/><path d="M104.72 9.46A60 60 0 0 1 200 58V134H160V58A20 20 0 0 0 124.72 45.09A66 66 0 0 0 104.72 9.46Z"/><path d="M224.8 94H264.8V134H224.8Z"/><path d="M289.6 134V58A60 60 0 0 1 409.6 58V134H369.6V58A20 20 0 0 0 329.6 58V134Z"/><path d="M394.33 9.46A60 60 0 0 1 489.6 58V134H449.6V58A20 20 0 0 0 414.33 45.09A66 66 0 0 0 394.33 9.46Z"/><path d="M514.4 0H554.4V134H514.4Z"/><path d="M514.4 -56.8H554.4V-16.8H514.4Z"/><path d="M574.74 0H614.56L692.74 134H652.91Z"/><path d="M652.91 0H692.74L614.56 134H574.74Z"/></g></svg></a>
+    <form class="search" role="search" action="/mmix-preview/catalog/" method="get" data-search>
+      <label class="sr" for="q">Поиск по каталогу</label>
+      <svg class="i search__ic" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Клей C2 TE S1, шпаклёвка, артикул…" value="" aria-autocomplete="list" aria-controls="suggest" maxlength="100">
+      <button class="btn btn--primary search__btn" type="submit">Найти</button>
+      <div class="suggest" id="suggest" role="listbox" hidden></div>
+    </form>
+    <nav class="hdr__actions" aria-label="Сравнение и корзина">
+      <a class="hdr__link hdr__masters" href="/mmix-preview/masters/" aria-label="Мастерам"><svg class="i" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.5 6.5a4 4 0 0 0 5 5L21 13l-8 8-3-3 8-8z"/><path d="M3 21l6-6"/></svg><span>Мастерам</span></a>
+      <div class="lang hdr__lang" role="group" aria-label="Язык сайта">
+    <svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+    <a href="/mmix-preview/remont/" hreflang="ru" lang="ru" aria-current="true" class="is-active">Русский</a>
+    <a href="/mmix-preview/tg/remont/" hreflang="tg" lang="tg" >Тоҷикӣ</a>
+  </div>
+      <div class="lang hdr__langm" role="group" aria-label="Язык сайта">
+        <a href="/mmix-preview/remont/" hreflang="ru" lang="ru" aria-label="Русский" aria-current="true" class="is-active">РУ</a>
+        <a href="/mmix-preview/tg/remont/" hreflang="tg" lang="tg" aria-label="Тоҷикӣ" >ТҶ</a>
+      </div>
+      <a class="hdr__link hdr__compare" href="/mmix-preview/compare/" aria-label="Сравнение"><svg class="i" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 4v16M16 4v16M4 8h8M12 16h8"/></svg><span>Сравнение</span><b class="badge" data-compare-count hidden>0</b></a>
+      <a class="hdr__link hdr__cart" href="/mmix-preview/cart/" aria-label="Корзина"><svg class="i" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.5L20.5 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg><span>Корзина</span><b class="badge" data-cart-count hidden>0</b></a>
+    </nav>
+  </div>
+  <nav class="cats" aria-label="Разделы каталога"><div class="wrap cats__in">
+    <a class="cats__item" href="/mmix-preview/catalog/">Все товары</a>
+    <a class="cats__item" href="/mmix-preview/catalog/plitochnye-klei/">Плиточные клеи</a><a class="cats__item" href="/mmix-preview/catalog/shpaklevki-i-shtukaturki/">Шпаклёвки и штукатурки</a><a class="cats__item" href="/mmix-preview/catalog/gruntovka-i-gidroizolyaciya/">Грунтовка и гидроизоляция</a><a class="cats__item" href="/mmix-preview/catalog/zatirka/">Затирка</a>
+    <a class="cats__item cats__item--calc is-active" href="/mmix-preview/remont/"><svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"/></svg> Калькулятор ремонта</a>
+    <a class="cats__item cats__item--accent" href="/mmix-preview/masters/">Программа для мастеров</a>
+  </div></nav>
+</header>
+<div class="banner"><div class="wrap"><svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg> <a href="/mmix-preview/delivery/">Бесплатная доставка по Душанбе</a></div></div>
+<main id="main" tabindex="-1">
+  <section class="rchero"><div class="wrap">
+    <nav class="crumbs crumbs--light" aria-label="Навигация"><ol><li><a href="/mmix-preview/">Главная</a></li><li aria-current="page">Калькулятор ремонта</li></ol></nav>
+    <span class="eyebrow eyebrow--light">Все материалы на комнату</span>
+    <h1>Калькулятор ремонта</h1>
+    <p>Укажите размеры комнаты и что будете делать — посчитаем грунтовку, гидроизоляцию, клей, шпаклёвку и штукатурку m.mix по данным производителя и положим всё в корзину одной кнопкой.</p>
+    <ol class="rchero__steps"><li><svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg> Размеры комнаты</li><li><svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg> Какие работы</li><li><svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.5L20.5 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg> Положить всё в корзину</li></ol>
+  </div></section>
+  <div class="wrap rc">
+    <form class="rcform" data-rc novalidate>
+      <fieldset class="rcsec">
+        <legend><span class="num">1</span> Что ремонтируем</legend>
+        <div class="rcpresets">
+    <label class="rcpreset"><input type="radio" name="preset" value="bath" checked>
+      <span class="rcpreset__box"><svg class="i" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg><b>Ванная или санузел</b><small>Гидроизоляция, плитка на пол и стены</small></span></label>
+    <label class="rcpreset"><input type="radio" name="preset" value="floor" >
+      <span class="rcpreset__box"><svg class="i" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><b>Плитка на пол</b><small>Кухня, коридор, комната</small></span></label>
+    <label class="rcpreset"><input type="radio" name="preset" value="walls" >
+      <span class="rcpreset__box"><svg class="i" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg><b>Стены под покраску</b><small>Шпаклёвка и грунтовка</small></span></label>
+    <label class="rcpreset"><input type="radio" name="preset" value="custom" >
+      <span class="rcpreset__box"><svg class="i" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.5 6.5a4 4 0 0 0 5 5L21 13l-8 8-3-3 8-8z"/><path d="M3 21l6-6"/></svg><b>Свой набор</b><small>Отметьте работы сами</small></span></label></div>
+      </fieldset>
+
+      <fieldset class="rcsec">
+        <legend><span class="num">2</span> Размеры комнаты</legend>
+        <div class="rcroom">
+          
+    <label class="field rcnum"><span class="field__label">Длина, м</span>
+      <input type="number" name="length" value="2" min="0.1" max="100" step="0.01" inputmode="decimal">
+      </label>
+          
+    <label class="field rcnum"><span class="field__label">Ширина, м</span>
+      <input type="number" name="width" value="1.7" min="0.1" max="100" step="0.01" inputmode="decimal">
+      </label>
+          
+    <label class="field rcnum"><span class="field__label">Высота стен, м</span>
+      <input type="number" name="height" value="2.5" min="0" max="10" step="0.01" inputmode="decimal">
+      <span class="field__hint">Для плитки — высота, до которой её кладёте</span></label>
+          
+    <label class="field rcnum"><span class="field__label">Двери и окна, м²</span>
+      <input type="number" name="openings" value="1.6" min="0" max="200" step="0.1" inputmode="decimal">
+      <span class="field__hint">Дверь 80 × 200 см — это 1,6 м²</span></label>
+        </div>
+        <div class="rcplan" aria-hidden="true"><div class="rcplan__room" data-rc-room><span data-rc-dim-l></span><span data-rc-dim-w></span></div></div>
+        <p class="rcareas" data-rc-areas aria-live="polite"></p>
+        <div class="rcconds"><label class="check"><input type="checkbox" name="wet" value="1" checked> <span>Влажное помещение (ванная, душ, санузел)</span></label><label class="check"><input type="checkbox" name="heated" value="1" > <span>Тёплый пол</span></label></div>
+      </fieldset>
+
+      <fieldset class="rcsec">
+        <legend><span class="num">3</span> Какие работы</legend>
+        <h3 class="rcgroup">Подготовка стен</h3>
+        
+    <div class="rcwork" data-work="plaster">
+      <label class="rcwork__head"><input type="checkbox" name="plaster_on" value="1"> <svg class="i" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg> <b>Штукатурка стен</b><span class="rcwork__sw" aria-hidden="true"></span></label>
+      <div class="rcwork__body">
+    <label class="field rcnum"><span class="field__label">Толщина слоя, мм</span>
+      <input type="number" name="plaster_mm" value="10" min="1" max="60" step="0.5" inputmode="decimal">
+      </label>
+    <label class="field rcpick"><span class="field__label">Материал</span>
+      <select name="plaster_product"><option value="">Подобрать автоматически</option><option value="10">M10 Штукатурка цементная</option><option value="11">Штукатурка гипсовая</option></select></label></div>
+    </div>
+        
+    <div class="rcwork" data-work="base">
+      <label class="rcwork__head"><input type="checkbox" name="base_on" value="1"> <svg class="i" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg> <b>Шпаклёвка стен — выравнивание</b><span class="rcwork__sw" aria-hidden="true"></span></label>
+      <div class="rcwork__body">
+    <label class="field rcnum"><span class="field__label">Толщина слоя, мм</span>
+      <input type="number" name="base_mm" value="2" min="0.5" max="15" step="0.5" inputmode="decimal">
+      </label>
+    <label class="field rcpick"><span class="field__label">Материал</span>
+      <select name="base_product"><option value="">Подобрать автоматически</option><option value="7">R3 Шпаклёвка цементная</option><option value="9">R4 Шпаклёвка гипсовая</option></select></label></div>
+    </div>
+        
+    <div class="rcwork" data-work="finish">
+      <label class="rcwork__head"><input type="checkbox" name="finish_on" value="1"> <svg class="i" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg> <b>Шпаклёвка стен — финишная</b><span class="rcwork__sw" aria-hidden="true"></span></label>
+      <div class="rcwork__body">
+    <label class="field rcnum"><span class="field__label">Толщина слоя, мм</span>
+      <input type="number" name="finish_mm" value="1" min="0.5" max="5" step="0.5" inputmode="decimal">
+      </label>
+    <label class="field rcpick"><span class="field__label">Материал</span>
+      <select name="finish_product"><option value="">Подобрать автоматически</option><option value="6">R1 Шпаклёвка цементная</option><option value="8">R2 Шпаклёвка полимерная</option></select></label></div>
+    </div>
+        <h3 class="rcgroup">Грунтовка и гидроизоляция</h3>
+        
+    <div class="rcwork" data-work="primer">
+      <label class="rcwork__head"><input type="checkbox" name="primer_on" value="1"> <svg class="i" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg> <b>Грунтовка</b><span class="rcwork__sw" aria-hidden="true"></span></label>
+      <div class="rcwork__body"><div class="rcrow"><label class="check"><input type="checkbox" name="primer_floor" value="1" checked> <span>Пол</span></label><label class="check"><input type="checkbox" name="primer_walls" value="1" checked> <span>Стены</span></label></div>
+    <label class="field rcnum"><span class="field__label">Слоёв (1–2)</span>
+      <input type="number" name="primer_layers" value="1" min="1" max="2" step="1" inputmode="decimal">
+      </label></div>
+    </div>
+        
+    <div class="rcwork" data-work="waterproof">
+      <label class="rcwork__head"><input type="checkbox" name="wp_on" value="1"> <svg class="i" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4 6v6c0 4.5 3.5 8 8 9 4.5-1 8-4.5 8-9V6z"/></svg> <b>Гидроизоляция</b><span class="rcwork__sw" aria-hidden="true"></span></label>
+      <div class="rcwork__body"><div class="rcgrid">
+          
+    <label class="field rcnum"><span class="field__label">Заход на стены, см</span>
+      <input type="number" name="wp_overlap" value="20" min="0" max="300" step="5" inputmode="decimal">
+      </label>
+          
+    <label class="field rcnum"><span class="field__label">Стены в зоне душа, м²</span>
+      <input type="number" name="wp_shower" value="0" min="0" max="200" step="0.5" inputmode="decimal">
+      </label>
+          
+    <label class="field rcnum"><span class="field__label">Количество слоёв</span>
+      <input type="number" name="wp_layers" value="2" min="1" max="5" step="1" inputmode="decimal">
+      </label>
+          
+    <label class="field rcnum"><span class="field__label">Толщина одного слоя, мм</span>
+      <input type="number" name="wp_mm" value="0.5" min="0.5" max="1" step="0.1" inputmode="decimal">
+      </label></div>
+          <p class="field__hint">По данным производителя один слой — 0,5–1,0 мм. Заход 20 см и 2 слоя стоят для примера — уточните у мастера.</p></div>
+    </div>
+        
+    <div class="rcwork" data-work="tape">
+      <label class="rcwork__head"><input type="checkbox" name="tape_on" value="1"> <svg class="i" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4 6v6c0 4.5 3.5 8 8 9 4.5-1 8-4.5 8-9V6z"/></svg> <b>Гидролента в углы и на стык пола со стенами</b><span class="rcwork__sw" aria-hidden="true"></span></label>
+      <div class="rcwork__body"><p class="field__hint">Длина — периметр пола плюс 4 угла на высоту захода гидроизоляции.</p></div>
+    </div>
+        <h3 class="rcgroup">Плитка</h3>
+        
+    <div class="rcwork" data-work="tile">
+      <label class="rcwork__head"><input type="checkbox" name="tile_on" value="1"> <svg class="i" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg> <b>Укладка плитки</b><span class="rcwork__sw" aria-hidden="true"></span></label>
+      <div class="rcwork__body">
+          <div class="rcrow"><label class="check"><input type="checkbox" name="tile_floor" value="1" checked> <span>Пол</span></label><label class="check"><input type="checkbox" name="tile_walls" value="1" checked> <span>Стены</span></label></div>
+          <div class="rcgrid">
+            <label class="field"><span class="field__label">Большая сторона плитки</span><select name="tile_size">
+              <option value="600">до 600 мм (например, 30×60, 60×60)</option><option value="800">до 800 мм (например, 80×80)</option><option value="1200">до 1200 мм (например, 60×120)</option><option value="2600">до 2600 мм (крупный формат)</option><option value="3900">до 3900 мм (сверхкрупный формат)</option></select></label>
+            
+    <label class="field rcnum"><span class="field__label">Толщина клеевого слоя, мм</span>
+      <input type="number" name="adh_mm" value="5" min="1" max="20" step="0.5" inputmode="decimal">
+      </label>
+          </div>
+          <p class="field__hint">5 мм — для примера: толщину выберет мастер по плитке и основанию. Предел для каждого клея — из каталога производителя.</p>
+          
+    <label class="field rcpick"><span class="field__label">Материал</span>
+      <select name="adh_product"><option value="">Подобрать автоматически</option><option value="1">C0 Клей плиточный</option><option value="2">C1 TE Клей для камня и керамогранита</option><option value="3">C2 TE Клей для камня и керамогранита</option><option value="4">C2 TE S1 Клей для камня и керамогранита</option><option value="5">C2 TE S2 Клей для камня и керамогранита</option></select></label></div>
+    </div>
+        
+    <div class="rcwork" data-work="grout">
+      <label class="rcwork__head"><input type="checkbox" name="grout_on" value="1"> <svg class="i" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg> <b>Затирка швов</b><span class="rcwork__sw" aria-hidden="true"></span></label>
+      <div class="rcwork__body"><div class="rcgrid">
+          <label class="field"><span class="field__label">Затирка</span><select name="grout_variant"><option value="15">Матовая</option><option value="16">Глянцевая</option></select></label>
+          
+    <label class="field rcnum"><span class="field__label">Сколько туб</span>
+      <input type="number" name="grout_qty" value="0" min="0" max="999" step="1" inputmode="decimal">
+      </label></div>
+          <p class="field__hint">Производитель не указал расход затирки — количество зависит от размера плитки и ширины шва. Укажите его сами или спросите менеджера.</p></div>
+    </div>
+        
+    <label class="field rcnum"><span class="field__label">Запас, %</span>
+      <input type="number" name="reserve" value="10" min="0" max="30" step="1" inputmode="decimal">
+      </label>
+      </fieldset>
+    </form>
+
+    <aside class="rcres" aria-labelledby="rc-res-h">
+      <div class="rcres__in">
+        <h2 id="rc-res-h"><svg class="i" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.5L20.5 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg> Что купить</h2>
+        <div class="rcres__lines" data-rc-lines aria-live="polite"><p class="note">Считаем…</p></div>
+        <div class="rcres__notes" data-rc-notes></div>
+        <div class="rcres__total" data-rc-total></div>
+        <div class="rcres__btns">
+          <button class="btn btn--primary btn--lg btn--block btn--go" type="button" data-rc-add disabled><svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.5L20.5 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg> Положить всё в корзину</button>
+          <button class="btn btn--secondary btn--block" type="button" data-rc-share disabled><svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="m8.2 10.8 7.6-3.6M8.2 13.2l7.6 3.6"/></svg> Поделиться списком</button>
+        </div>
+        <p class="note">Расчёт — по расходу из каталога производителя m.mix, с запасом. Фактический расход зависит от основания и инструмента; окончательное количество подтвердит менеджер.</p>
+      </div>
+    </aside>
+  </div>
+  <div class="rcbar" data-rc-bar hidden><div><b data-rc-bar-sum></b><small data-rc-bar-n></small></div><a class="btn btn--white btn--sm" href="#rc-res-h">Смотреть список</a></div>
+  <script type="application/json" id="rc-data">{"products":[{"id":1,"key":"c0","role":"adhesive","title":"C0 Клей плиточный","code":"C0","url":"/mmix-preview/product/klej-plitochnyj-c0/","image":"89fddaf43905084aa10ddef8f6360f0b","attrs":{"adhesive_class":"C0","max_tile":600,"work_area":{"yes":["interior"],"no":["exterior"]},"wet_rooms":true,"facade":false,"heated_floor":false,"base":{"yes":["cement"],"no":[]},"purpose":{"yes":["tile","blocks"],"no":[]}},"calc":null,"variants":[{"id":1,"name":"","pack":"25 кг","unit":"мешок","amount":25,"packUnit":"кг","price_minor":10000,"price_confirmed":false,"canBuy":true}]},{"id":2,"key":"c1te","role":"adhesive","title":"C1 TE Клей для камня и керамогранита","code":"C1 TE","url":"/mmix-preview/product/klej-c1-te/","image":"6b84f9e1328fb373f36898c0c01219e1","attrs":{"adhesive_class":"C1 TE","max_tile":800,"thickness":{"max":20},"work_area":{"yes":["interior","exterior"],"no":[]},"purpose":{"yes":["tile"],"no":[]}},"calc":{"type":"area_thickness","rate":1.3,"thickness":{"max":20},"layers":null},"variants":[{"id":2,"name":"","pack":"25 кг","unit":"мешок","amount":25,"packUnit":"кг","price_minor":10000,"price_confirmed":false,"canBuy":true}]},{"id":3,"key":"c2te","role":"adhesive","title":"C2 TE Клей для камня и керамогранита","code":"C2 TE","url":"/mmix-preview/product/klej-c2-te/","image":"d627766170689403be8baba912a2613e","attrs":{"adhesive_class":"C2 TE","max_tile":1200,"thickness":{"max":20},"work_area":{"yes":["interior","exterior"],"no":[]},"wet_rooms":true,"facade":true,"purpose":{"yes":["tile"],"no":[]}},"calc":{"type":"area_thickness","rate":1.2,"thickness":{"max":20},"layers":null},"variants":[{"id":3,"name":"","pack":"25 кг","unit":"мешок","amount":25,"packUnit":"кг","price_minor":10000,"price_confirmed":false,"canBuy":true}]},{"id":4,"key":"c2tes1","role":"adhesive","title":"C2 TE S1 Клей для камня и керамогранита","code":"C2 TE S1","url":"/mmix-preview/product/klej-c2-te-s1-super-flex/","image":"bae1f81a0bd637137be0e4508036b29b","attrs":{"adhesive_class":"C2 TE S1","max_tile":2600,"thickness":{"max":10},"work_area":{"yes":["interior","exterior"],"no":[]},"wet_rooms":true,"facade":true,"heated_floor":true,"base":{"yes":["cement"],"no":[]},"purpose":{"yes":["tile"],"no":[]}},"calc":{"type":"area_thickness","rate":1.1,"thickness":{"max":10},"layers":null},"variants":[{"id":4,"name":"","pack":"25 кг","unit":"мешок","amount":25,"packUnit":"кг","price_minor":10000,"price_confirmed":false,"canBuy":true}]},{"id":5,"key":"c2tes2","role":"adhesive","title":"C2 TE S2 Клей для камня и керамогранита","code":"C2 TE S2","url":"/mmix-preview/product/klej-c2-te-s2-dvuhkomponentnyj/","image":"03e3d645363a045c58f992984f0a6f78","attrs":{"adhesive_class":"C2 TE S2","max_tile":3900,"thickness":{"max":10},"work_area":{"yes":["interior","exterior"],"no":[]},"wet_rooms":true,"facade":true,"heated_floor":true,"purpose":{"yes":["tile"],"no":[]}},"calc":{"type":"area_thickness","rate":1.1,"thickness":{"max":10},"layers":null},"variants":[{"id":5,"name":"","pack":"25 кг + компонент 2,5 кг","unit":"комплект","amount":25,"packUnit":"кг","price_minor":10000,"price_confirmed":false,"canBuy":true}]},{"id":6,"key":"r1","role":"finish","title":"R1 Шпаклёвка цементная","code":"R1","url":"/mmix-preview/product/shpaklevka-cementnaya-finishnaya-r1/","image":"cb469e0ed16f30967fb1b0e471e236a9","attrs":{"thickness":{"min":1,"max":2},"work_area":{"yes":["interior"],"no":["exterior"]},"facade":false,"base":{"yes":["cement"],"no":[]},"purpose":{"yes":["finish"],"no":[]}},"calc":{"type":"area_thickness","rate":1,"thickness":{"min":1,"max":2},"layers":null},"variants":[{"id":6,"name":"","pack":"20 кг","unit":"мешок","amount":20,"packUnit":"кг","price_minor":10000,"price_confirmed":false,"canBuy":true}]},{"id":7,"key":"r3","role":"base","title":"R3 Шпаклёвка цементная","code":"R3","url":"/mmix-preview/product/shpaklevka-cementnaya-bazovaya-r3/","image":"2e3a912fa0e9246b054f8226f1b5028f","attrs":{"thickness":{"min":1,"max":8},"work_area":{"yes":["interior","exterior"],"no":[]},"facade":true,"base":{"yes":["cement"],"no":[]},"purpose":{"yes":["base_level","repair"],"no":[]}},"calc":{"type":"area_thickness","rate":0.9,"thickness":{"min":1,"max":8},"layers":null},"variants":[{"id":7,"name":"","pack":"25 кг","unit":"мешок","amount":25,"packUnit":"кг","price_minor":10000,"price_confirmed":false,"canBuy":true}]},{"id":8,"key":"r2","role":"finish","title":"R2 Шпаклёвка полимерная","code":"R2","url":"/mmix-preview/product/shpaklevka-polimernaya-finishnaya-r2/","image":"58de12927e84558720bf8387e43156ac","attrs":{"thickness":{"min":1,"max":2},"work_area":{"yes":["interior"],"no":[]},"base":{"yes":["polymer"],"no":[]},"purpose":{"yes":["finish","repair"],"no":[]}},"calc":{"type":"area_thickness","rate":1,"thickness":{"min":1,"max":2},"layers":null},"variants":[{"id":8,"name":"","pack":"20 кг","unit":"мешок","amount":20,"packUnit":"кг","price_minor":10000,"price_confirmed":false,"canBuy":true}]},{"id":9,"key":"r4","role":"base","title":"R4 Шпаклёвка гипсовая","code":"R4","url":"/mmix-preview/product/shpaklevka-gipsovaya-r4/","image":"54a532c1e0667a66e5355de521c1fba3","attrs":{"thickness":{"min":1,"max":10},"work_area":{"yes":["interior"],"no":["exterior"]},"facade":false,"base":{"yes":["gypsum"],"no":[]},"purpose":{"yes":["base_level","repair"],"no":[]}},"calc":{"type":"area_thickness","rate":0.9,"thickness":{"min":1,"max":10},"layers":null},"variants":[{"id":9,"name":"","pack":"20 кг","unit":"мешок","amount":20,"packUnit":"кг","price_minor":10000,"price_confirmed":false,"canBuy":true}]},{"id":10,"key":"m10","role":"plaster","title":"M10 Штукатурка цементная","code":"M10","url":"/mmix-preview/product/shtukaturka-cementnaya-m10/","image":"67350ebb4142a96c5dcc1393c5e9e82c","attrs":{"thickness":{"min":5,"max":60},"work_area":{"yes":["interior","exterior"],"no":[]},"wet_rooms":true,"facade":true,"base":{"yes":["cement"],"no":[]},"purpose":{"yes":["plaster","base_level"],"no":[]}},"calc":{"type":"area_thickness","rate":1.4,"thickness":{"min":5,"max":60},"layers":null},"variants":[{"id":10,"name":"","pack":"25 кг","unit":"мешок","amount":25,"packUnit":"кг","price_minor":10000,"price_confirmed":false,"canBuy":true}]},{"id":11,"key":"gypsum_plaster","role":"plaster","title":"Штукатурка гипсовая","code":"","url":"/mmix-preview/product/shtukaturka-gipsovaya/","image":"b78d6a49d469f083f92195e4f1a96464","attrs":{"thickness":{"min":5,"max":50},"work_area":{"yes":["interior"],"no":["exterior"]},"facade":false,"base":{"yes":["gypsum"],"no":[]},"purpose":{"yes":["plaster"],"no":[]}},"calc":null,"variants":[{"id":11,"name":"","pack":"25 кг","unit":"мешок","amount":25,"packUnit":"кг","price_minor":10000,"price_confirmed":false,"canBuy":true}]},{"id":12,"key":"primer","role":"primer","title":"Грунтовка универсальная","code":"","url":"/mmix-preview/product/gruntovka-glubokogo-proniknoveniya/","image":"d9e2d88e5007037f43773ebfb92b8158","attrs":{"work_area":{"yes":["interior","exterior"],"no":[]},"base":{"yes":["acrylic"],"no":[]},"purpose":{"yes":["priming"],"no":[]}},"calc":{"type":"area_layers","rateMin":100,"rateMax":150,"thickness":null,"layers":{"min":1,"max":2}},"variants":[{"id":12,"name":"","pack":"10 л","unit":"канистра","amount":10,"packUnit":"л","price_minor":10000,"price_confirmed":false,"canBuy":true}]},{"id":13,"key":"waterproofing","role":"waterproof","title":"Гидроизоляция","code":"","url":"/mmix-preview/product/gidroizolyaciya-polimernaya/","image":"54f56cee43dbc0f6df50543244ddfbc0","attrs":{"work_area":{"yes":["interior"],"no":["exterior"]},"wet_rooms":true,"heated_floor":true,"base":{"yes":["polymer"],"no":[]},"purpose":{"yes":["waterproof"],"no":[]}},"calc":{"type":"area_thickness","rate":1.4,"thickness":{"min":0.5,"max":1},"layers":true},"variants":[{"id":13,"name":"","pack":"10 кг","unit":"ведро","amount":10,"packUnit":"кг","price_minor":10000,"price_confirmed":false,"canBuy":true}]},{"id":14,"key":"superelast","role":"tape","title":"Гидролента SUPERELAST","code":"SUPERELAST","url":"/mmix-preview/product/gidrolenta-superelast/","image":"86a13fd1a91ef6332eba1d5bfee4b074","attrs":{"work_area":{"yes":["interior","exterior"],"no":[]},"wet_rooms":true,"purpose":{"yes":["seal","waterproof"],"no":[]}},"calc":{"type":"length","thickness":null,"layers":null},"variants":[{"id":14,"name":"","pack":"рулон 10 м","unit":"рулон","amount":10,"packUnit":"м","price_minor":10000,"price_confirmed":false,"canBuy":true}]},{"id":15,"key":"grout","role":"grout","title":"Двухкомпонентная эпоксидная затирка для швов","code":"","url":"/mmix-preview/product/epoksidnaya-zatirka/","image":"bb5e51e81a7d568c58ab8d9b9afce923","attrs":{"wet_rooms":true,"base":{"yes":["epoxy"],"no":[]},"purpose":{"yes":["grout"],"no":[]},"work_area":{"yes":["interior"],"no":[]}},"calc":null,"variants":[{"id":15,"name":"Матовая","pack":"туба 400 мл","unit":"туба","amount":400,"packUnit":"мл","price_minor":10000,"price_confirmed":false,"canBuy":true},{"id":16,"name":"Глянцевая","pack":"туба 400 мл","unit":"туба","amount":400,"packUnit":"мл","price_minor":10000,"price_confirmed":false,"canBuy":true}]}]}</script></main>
+<footer class="ftr">
+  <div class="wrap ftr__grid">
+    <div class="ftr__brand">
+      <svg class="logo" viewBox="0 -56.8 692.74 190.8" role="img" aria-label="m.mix"><g fill="#FFFFFF"><path d="M0 134V58A60 60 0 0 1 120 58V134H80V58A20 20 0 0 0 40 58V134Z"/><path d="M104.72 9.46A60 60 0 0 1 200 58V134H160V58A20 20 0 0 0 124.72 45.09A66 66 0 0 0 104.72 9.46Z"/><path d="M224.8 94H264.8V134H224.8Z"/><path d="M289.6 134V58A60 60 0 0 1 409.6 58V134H369.6V58A20 20 0 0 0 329.6 58V134Z"/><path d="M394.33 9.46A60 60 0 0 1 489.6 58V134H449.6V58A20 20 0 0 0 414.33 45.09A66 66 0 0 0 394.33 9.46Z"/><path d="M514.4 0H554.4V134H514.4Z"/><path d="M514.4 -56.8H554.4V-16.8H514.4Z"/><path d="M574.74 0H614.56L692.74 134H652.91Z"/><path d="M652.91 0H692.74L614.56 134H574.74Z"/></g></svg>
+      <p>Сухие строительные смеси</p>
+      <p class="ftr__slogan">Качество, которому доверяют профессионалы</p>
+    </div>
+    <div>
+      <h2 class="ftr__h">Каталог</h2>
+      <a href="/mmix-preview/catalog/plitochnye-klei/">Плиточные клеи</a><a href="/mmix-preview/catalog/shpaklevki-i-shtukaturki/">Шпаклёвки и штукатурки</a><a href="/mmix-preview/catalog/gruntovka-i-gidroizolyaciya/">Грунтовка и гидроизоляция</a><a href="/mmix-preview/catalog/zatirka/">Затирка</a>
+      <a href="/mmix-preview/remont/">Калькулятор ремонта</a>
+      <a href="/mmix-preview/compare/">Сравнение</a>
+    </div>
+    <div>
+      <h2 class="ftr__h">Покупателям</h2>
+      <a href="/mmix-preview/delivery/">Доставка и оплата</a>
+      <a href="/mmix-preview/about/">О компании</a>
+      <a href="/mmix-preview/masters/">Программа для мастеров</a>
+      <a href="/mmix-preview/contacts/">Контакты</a>
+    </div>
+    <div>
+      <h2 class="ftr__h">Контакты</h2>
+      <a href="tel:+992000004145"><svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg> +992 00 000 41 45</a>
+      <a href="https://wa.me/992000004145" rel="noopener" target="_blank"><svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c0 2.5 2.5 5 5 5l1.2-1.2-1.7-1-1 .6a3.5 3.5 0 0 1-2-2l.6-1-1-1.7z"/></svg> WhatsApp</a>
+      <a href="https://www.instagram.com/m.mix.tj/" rel="noopener" target="_blank"><svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.8" cy="7.2" r=".6" fill="currentColor"/></svg> @m.mix.tj</a>
+      
+      <span>Душанбе, Таджикистан</span>
+      <div class="lang ftr__lang" role="group" aria-label="Язык сайта">
+    <svg class="i i--sm" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+    <a href="/mmix-preview/remont/" hreflang="ru" lang="ru" aria-current="true" class="is-active">Русский</a>
+    <a href="/mmix-preview/tg/remont/" hreflang="tg" lang="tg" >Тоҷикӣ</a>
+  </div>
+    </div>
+  </div>
+  <div class="wrap ftr__bottom">
+    <span>© 2026 m.mix</span>
+    <span>Цены и наличие подтверждает менеджер при оформлении заказа.</span>
+  </div>
+</footer>
+<div class="toast" role="status" aria-live="polite" data-toast hidden></div>
+<script type="application/json" id="i18n">{"js.noscript":"Для корзины, расчёта и оформления заказа включите JavaScript в браузере.","js.added":"Добавлено в корзину","js.go_cart":"Перейти в корзину","js.qty_max":"Можно заказать не больше {n}","js.remove":"Удалить","js.unavailable":"Товар больше недоступен — удалите его из корзины","js.qty_reduced":"Доступно только {n} — уменьшите количество","js.price_changed":"Цена изменилась: было {was}, стало {now}","js.out_of_stock":"Нет в наличии","js.changes_title":"Пока вы оформляли заказ, условия изменились:","js.confirm_changes":"Согласен, подтвердить с новыми условиями","js.submitting":"Отправляем…","js.network":"Нет связи с сервером. Проверьте интернет и нажмите ещё раз — повторная отправка не создаст второй заказ.","js.compare_added":"Добавлено к сравнению","js.compare_removed":"Убрано из сравнения","js.compare_max":"Сравнивать можно до 4 товаров","js.compare_go":"Сравнить","js.copied":"Скопировано","js.estimate_link":"Ссылка на смету скопирована","js.search_products":"Товары","js.search_categories":"Разделы","js.search_all":"Показать все результаты","js.search_empty":"Ничего не нашли","js.calc_need":"Нужно примерно","js.calc_packs":"Упаковок","js.calc_formula":"Как считали","js.calc_invalid":"Проверьте значения","js.calc_add":"Добавить {n} в корзину","js.calc_range":"от {min} до {max}","js.rc_auto":"Подобрать автоматически","js.rc_auto_is":"Автоматически: {name}","js.rc_tag_no":"не подходит","js.rc_tag_nocalc":"нет данных о расходе","js.rc_tag_unknown":"не подтверждено для этих условий","js.rc_c_tile":"плитка до {mm} мм","js.rc_c_wet":"влажные помещения","js.rc_c_heated":"тёплый пол","js.rc_bad_size":"Проверьте размеры комнаты","js.rc_floor":"Пол","js.rc_walls":"Стены","js.rc_perimeter":"Периметр","js.rc_err_thickness":"Толщина слоя для этого материала по данным производителя: {range} мм","js.rc_err_layers":"Количество слоёв: {range}","js.rc_err_other":"Посчитать не можем — уточните у менеджера","js.rc_grout_manual":"Производитель не указал расход — укажите количество сами","js.rc_on_request":"Цена по запросу","js.rc_w_plaster":"Штукатурка","js.rc_w_base":"Шпаклёвка — выравнивание","js.rc_w_finish":"Шпаклёвка — финиш","js.rc_w_primer":"Грунтовка","js.rc_w_waterproof":"Гидроизоляция","js.rc_w_tape":"Гидролента","js.rc_w_adhesive":"Плиточный клей","js.rc_w_grout":"Затирка","js.rc_empty":"Отметьте работы — здесь появится список материалов.","js.rc_note_no_confirmed":"{work}: в каталоге нет материала с подтверждёнными данными для этих условий. Можно выбрать вручную ({list}) или уточнить у менеджера.","js.rc_note_no_product":"{work}: для этих условий в каталоге нет подходящего материала.","js.rc_note_needs_waterproof":"Гидроленту считаем вместе с гидроизоляцией — отметьте её.","js.rc_note_needs_tile":"Затирка нужна вместе с плиткой — отметьте укладку плитки.","js.rc_note_nocalc":"{list} тоже подходит, но производитель не указал расход — посчитать количество нельзя.","js.rc_total":"Итого","js.rc_unpriced":"Без цены ещё позиций: {n} — цену назовёт менеджер.","js.rc_prelim":"предварительная цена","js.rc_added":"Добавлено в корзину позиций: {n}","js.rc_share_title":"Материалы m.mix для ремонта","js.rc_bar_items":"Материалов: {n}","js.preview_off":"Это демо-версия для согласования дизайна: отсюда ничего не отправляется. На настоящем сайте это будет работать.","js.items_n":"Товары ({n})","js.delivery":"Доставка","js.delivery_manager":"рассчитает менеджер","js.pickup":"Самовывоз","js.free":"бесплатно","js.free_zone":"бесплатно ({zone})","js.delivery_outside":"в ваш город — рассчитает менеджер","js.total":"Итого","js.total_pending":"уточнит менеджер","js.price_on_request":"Цена по запросу","js.preliminary":"Цены предварительные — окончательную сумму подтвердит менеджер.","js.ref_master":"Заказ по рекомендации мастера: {name}","js.ref_invalid":"Код не найден или мастер не участвует в программе","js.ref_self":"Это ваш код. Свои покупки засчитываются вам при входе в кабинет.","js.cashback_ref":"Мастеру будет начислено предварительно {sum}","js.cashback_own":"Ваш предварительный кэшбэк: {sum}","js.code_sent":"Код отправлен на {phone}.","js.code_sent_login":"Если номер зарегистрирован в программе, придёт SMS с кодом.","js.resend_in":"Повторно — через {s} с","js.resend":"Отправить код ещё раз","js.payout_sent":"Заявка {no} отправлена","js.money_unit":"сомони","js.each":"за {unit}","js.line_total":"Сумма"}</script>
+<script type="module" src="/mmix-preview/static/js/shop.js?v=mvyp31wp"></script>
+<script type="module" src="/mmix-preview/static/js/remont.js?v=mvyp31wp"></script>
+<noscript><div class="noscript">Для корзины, расчёта и оформления заказа включите JavaScript в браузере.</div></noscript>
+<script type="module" src="/mmix-preview/static/js/preview.js"></script>
+</body>
+</html>
