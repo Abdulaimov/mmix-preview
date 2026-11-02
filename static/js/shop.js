@@ -163,11 +163,50 @@ const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
   }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
   for (const el of els) if (!onScreen.has(el)) io.observe(el);
 })();
+// Шапка: тень после начала прокрутки. На телефоне и планшете, где шапка в две строки и с разделами, она уходит,
+// когда листают вниз, и возвращается, как только листают вверх. Пока открыто меню или идёт поиск — стоит на месте.
 (() => {
-  const hdr = document.querySelector('.hdr');
+  const hdr = /** @type {HTMLElement|null} */ (document.querySelector('.hdr'));
   if (!hdr) return;
-  const on = () => hdr.classList.toggle('is-scrolled', scrollY > 8);
+  const root = document.documentElement;
+  const narrow = matchMedia('(max-width: 979px)');
+  const input = hdr.querySelector('.search input');
+  const suggest = /** @type {HTMLElement|null} */ (hdr.querySelector('.suggest'));
+  // Высоту шапки знают липкие блоки под ней (строка разделов товара) и отступ при переходе по якорю
+  let height = 0;
+  const measure = () => { height = hdr.offsetHeight; root.style.setProperty('--hdr-h', `${height}px`); };
+  measure();
+  new ResizeObserver(measure).observe(hdr);
+  let hidden = false, lastY = Math.max(0, scrollY);
+  const hide = (/** @type {boolean} */ v) => {
+    if (v === hidden) return;
+    hidden = v;
+    hdr.classList.toggle('is-hidden', v);
+    root.classList.toggle('hdr-hidden', v);
+  };
+  const busy = () => !!hdr.querySelector('details[open]') || document.activeElement === input || !!(suggest && !suggest.hidden);
+  const on = () => {
+    const y = Math.max(0, scrollY);
+    hdr.classList.toggle('is-scrolled', y > 8);
+    if (!narrow.matches || busy() || y < height) { hide(false); lastY = y; return; }
+    // У нижнего края страница «пружинит» — это не прокрутка вверх
+    if (y + innerHeight >= root.scrollHeight - 4) { lastY = y; return; }
+    // Мелкое дрожание пальца не считаем
+    if (Math.abs(y - lastY) < 10) return;
+    hide(y > lastY);
+    lastY = y;
+  };
   addEventListener('scroll', on, { passive: true });
+  narrow.addEventListener('change', () => hide(false));
+  // С клавиатуры (Tab) в спрятанную шапку — показываем
+  hdr.addEventListener('focusin', () => hide(false));
+  // Переход по якорю на этой странице: если цель ниже — шапка уйдёт сразу, и отступ сверху посчитается без неё
+  document.addEventListener('click', (e) => {
+    const a = /** @type {HTMLAnchorElement|null} */ (/** @type {Element} */ (e.target).closest?.('a[href^="#"]'));
+    if (!a || !narrow.matches || a.hash.length < 2) return;
+    const target = document.getElementById(decodeURIComponent(a.hash.slice(1)));
+    if (target) hide(target.getBoundingClientRect().top > height);
+  });
   on();
 })();
 (() => {

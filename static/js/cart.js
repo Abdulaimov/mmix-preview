@@ -1,5 +1,6 @@
 // Корзина, смета и оформление заказа. Цены и наличие всегда пересчитывает сервер.
 import { BASE, LANG, ROOT, api, cart, errText, esc, load, money, newKey, phoneMask, phoneValue, showErrors, t, toast } from './common.js';
+import { unitAfterPer } from './units.js';
 
 const img = (/** @type {string|null} */ key) => (key ? `<img src="${ROOT}/media/${esc(key)}-480.webp" alt="" loading="lazy">` : '');
 const cookie = (/** @type {string} */ name) => document.cookie.split('; ').find((c) => c.startsWith(name + '='))?.split('=')[1] || '';
@@ -45,7 +46,7 @@ if (cartPage) {
       return `<div class="cline" data-line="${l.variantId}">
         <a class="cline__img" href="${BASE}/product/${esc(l.slug)}">${img(l.imageKey)}</a>
         <div><a class="cline__title" href="${BASE}/product/${esc(l.slug)}">${esc([l.code, l.name].filter(Boolean).join(' '))}${l.variantName ? ` · ${esc(l.variantName)}` : ''}</a>
-          <div class="cline__meta">${esc(l.packLabel)} · ${esc(l.sku)} · ${l.unitPriceMinor == null ? esc(t('js.price_on_request')) : `${money(l.unitPriceMinor)} ${esc(t('js.each', { unit: l.unit }))}`}</div></div>
+          <div class="cline__meta">${esc(l.packLabel)} · ${esc(l.sku)} · ${l.unitPriceMinor == null ? esc(t('js.price_on_request')) : `${money(l.unitPriceMinor)} ${esc(t('js.each', { unit: unitAfterPer(LANG, l.unit) }))}`}</div></div>
         <div class="cline__row">
           <div class="qty" data-qty><button type="button" class="qty__btn" data-step="-1" aria-label="−">−</button>
             <input class="qty__in" type="number" min="1" max="${l.maxQty || 1}" value="${l.qty}" data-line-qty="${l.variantId}" inputmode="numeric" aria-label="${esc(l.unit)}">

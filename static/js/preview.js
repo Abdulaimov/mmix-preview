@@ -34,7 +34,7 @@ function applyCatalog(data, results, slug) {
     const card = cards.get(x.id);
     if (!card) return null;
     card.querySelector('.card__unknown')?.remove();
-    if (x.unknownLabels.length) card.querySelector('.card__body')?.append(el('p', 'card__unknown', fmt(i.no_data_for, { list: x.unknownLabels.join(', ') })));
+    if (x.unknownLabels.length) card.querySelector('.card__meta')?.append(el('p', 'card__unknown', fmt(i.no_data_for, { list: x.unknownLabels.join(', ') })));
     return card;
   };
   grid.replaceChildren(.../** @type {HTMLElement[]} */ (r.matched.map(take).filter(Boolean)));
