@@ -1,6 +1,7 @@
 // Демо-копия сайта: страницы сохранены заранее, поэтому поиск, фильтры, сортировку каталога и сравнение
 // применяем в браузере по снимку каталога. Подключается только в демо-копии (scripts/export-preview.js).
 import { LANG, ROOT, compare } from './common.js';
+import { initCompare } from './compare-rows.js';
 import { loadPreviewData } from './preview-api.js';
 import { pageLink, parseQuery, previewCatalog } from './preview-core.js';
 
@@ -120,18 +121,6 @@ function applyCompare() {
     const cells = [...row.cells];
     row.replaceChildren(cells[0], ...ids.map((id) => cells[/** @type {number} */ (col.get(id))]));
   }
-  // Строки, где у выбранных товаров нет данных, и пустые разделы — скрываем
-  const body = table.tBodies[0];
-  let section = null, sectionHasRows = false;
-  for (const row of [...body.rows]) {
-    if (row.classList.contains('cmptable__sec')) {
-      if (section) section.hidden = !sectionHasRows;
-      section = row; sectionHasRows = false;
-      continue;
-    }
-    const filled = [...row.cells].slice(1).some((c) => !(c.children.length === 1 && c.firstElementChild?.classList.contains('muted')) && c.textContent?.trim() !== '');
-    row.hidden = !filled;
-    if (filled) sectionHasRows = true;
-  }
-  if (section) section.hidden = !sectionHasRows;
+  // Какие строки показать — решает общий код: пустые скрыты, сразу видны только отличия
+  initCompare(table);
 }

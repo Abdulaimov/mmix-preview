@@ -3,6 +3,7 @@
 // Считаем строго по данным производителя (расход и допустимая толщина из каталога). Где данных нет —
 // количество не придумываем, а говорим об этом. Подходит ли товар, решаем по свойствам из каталога:
 // «нет данных» — это не «подходит».
+import { ceilUp, cheapestPack, largestPack } from './calc-packs.js';
 
 /** Готовые наборы работ */
 export const PRESETS = {
@@ -75,7 +76,7 @@ export function areas(room) {
   return { floor, perimeter, walls };
 }
 
-const ceil = (/** @type {number} */ x) => Math.ceil(x - 1e-9);
+const ceil = ceilUp;
 const clamp = (/** @type {number} */ x, /** @type {number} */ a, /** @type {number} */ b) => Math.min(b, Math.max(a, x));
 const okNum = (/** @type {any} */ x) => typeof x === 'number' && Number.isFinite(x);
 
@@ -137,13 +138,13 @@ export function plan(input, products) {
       continue;
     }
     const p = chosen.p;
-    const variant = (role === 'grout' && p.variants.find((/** @type {any} */ v) => v.id === Number(opts.variantId))) || p.variants[0];
+    const variant = (role === 'grout' && p.variants.find((/** @type {any} */ v) => v.id === Number(opts.variantId))) || largestPack(p.variants);
     /** @type {any} */
     const line = { role, productId: p.id, variantId: variant.id, fit: chosen.fit, checks: chosen.checks, options: usable.map((c) => ({ id: c.p.id, fit: c.fit })), noCalc, qty: null, formula: null, error: null };
     const calc = p.calc;
 
     if (role === 'grout') {
-      // Расход затирки производитель не указал: количество задаёт покупатель, по умолчанию — ничего
+      // Расход затирки зависит от размера плитки и ширины шва (таблица — на странице затирки): количество задаёт покупатель, по умолчанию — ничего
       line.qty = clamp(Math.floor(Number(opts.qty) || 0), 0, 999);
       line.manual = true;
     } else if (role === 'tape') {
@@ -175,8 +176,11 @@ export function plan(input, products) {
       else {
         const a = area[role];
         const need = a * mm * calc.rate * layers * k;
-        line.qty = ceil(need / variant.amount);
-        line.formula = { kind: 'thickness', area: a, mm, rate: calc.rate, layers, k, need, unit: 'кг', pack: variant.amount };
+        // Несколько фасовок (гидроизоляция 5 и 10 кг): на нужное количество берём самую выгодную
+        const pack = cheapestPack(p.variants, need);
+        line.variantId = pack.id;
+        line.qty = ceil(need / pack.amount);
+        line.formula = { kind: 'thickness', area: a, mm, rate: calc.rate, layers, k, need, unit: 'кг', pack: pack.amount };
       }
     } else {
       line.error = { code: 'no_calc' };

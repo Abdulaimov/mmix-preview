@@ -2,6 +2,7 @@
 // Пересчёт — при каждом изменении; введённое запоминается в этом браузере.
 import { BASE, LANG, ROOT, api, cart, errText, esc, load, money, save, t, toast } from './common.js';
 import { PRESETS, candidates, plan, totals } from './repair-calc.js';
+import { packLabel } from './calc-packs.js';
 
 const form = /** @type {HTMLFormElement|null} */ (document.querySelector('[data-rc]'));
 if (form) init(form);
@@ -42,6 +43,9 @@ function init(form) {
       else if (x.type === 'radio') x.checked = x.value === s[x.name];
       else x.value = String(s[x.name]);
     }
+    // Запас теперь выбирают из списка: если сохранилось другое значение — обычные 10 %
+    const reserve = /** @type {HTMLSelectElement|null} */ (form.querySelector('select[name=reserve]'));
+    if (reserve && reserve.selectedIndex < 0) reserve.value = '10';
   }
 
   /** @param {string} key */
@@ -132,17 +136,15 @@ function init(form) {
       const p = byId(l.productId), v = p.variants.find((/** @type {any} */ x) => x.id === l.variantId);
       const conds = l.checks.filter((/** @type {any} */ c) => c.cond !== 'interior');
       const chips = conds.map((/** @type {any} */ c) => `<span class="rcchip rcchip--${c.fit}">${c.fit === 'yes' ? '✓' : '?'} ${esc(condText(c.cond, input))}</span>`).join('');
-      // «мешок 25 кг», но «рулон 10 м», а не «рулон рулон 10 м»
-      const packLabel = String(v.pack).toLowerCase().startsWith(String(v.unit).toLowerCase()) ? v.pack : `${v.unit} ${v.pack}`;
       let qty = '';
       if (l.error) qty = `<p class="rcline__err">${esc(l.error.code === 'thickness' ? t('js.rc_err_thickness', { range: [l.error.min, l.error.max].map((x) => (x == null ? '…' : num(x))).join('–') })
         : l.error.code === 'layers' ? t('js.rc_err_layers', { range: `${l.error.min}–${l.error.max}` }) : t('js.rc_err_other'))}</p>`;
-      else if (l.manual) qty = `<div class="rcline__qty"><div class="qty qty--sm"><button type="button" class="qty__btn" data-grout-step="-1" aria-label="−">−</button><b class="rcline__n">${l.qty}</b><button type="button" class="qty__btn" data-grout-step="1" aria-label="+">+</button></div> × ${esc(packLabel)}</div><p class="rcline__hint">${esc(t('js.rc_grout_manual'))}</p>`;
+      else if (l.manual) qty = `<div class="rcline__qty"><div class="qty qty--sm"><button type="button" class="qty__btn" data-grout-step="-1" aria-label="−">−</button><b class="rcline__n">${l.qty}</b><button type="button" class="qty__btn" data-grout-step="1" aria-label="+">+</button></div> × ${esc(packLabel(v))}</div><p class="rcline__hint">${esc(t('js.rc_grout_manual'))}</p>`;
       else {
         const f = l.formula;
         const need = f.kind === 'layers' ? t('js.calc_range', { min: num(f.min), max: num(f.max) }) : num(f.need);
         const bump = prevQty[l.role] !== undefined && prevQty[l.role] !== l.qty ? ' is-bump' : '';
-        qty = `<div class="rcline__qty"><b class="rcline__n${bump}">${l.qtyMin != null && l.qtyMin !== l.qty ? `${l.qtyMin}–${l.qty}` : l.qty}</b> × ${esc(packLabel)} <span class="rcline__need">≈ ${need} ${f.unit}</span></div>
+        qty = `<div class="rcline__qty"><b class="rcline__n${bump}">${l.qtyMin != null && l.qtyMin !== l.qty ? `${l.qtyMin}–${l.qty}` : l.qty}</b> × ${esc(packLabel(v))} <span class="rcline__need">≈ ${need} ${f.unit}</span></div>
           <details class="rcline__how"><summary>${esc(t('js.calc_formula'))}</summary><div class="calc__formula">${formula(l)}</div></details>`;
       }
       prevQty[l.role] = l.qty;
@@ -176,6 +178,7 @@ function init(form) {
 
     const tt = totals(res.lines, products);
     totalBox.innerHTML = tt.items ? `<div class="rcres__sum"><span>${esc(t('js.rc_total'))}</span><b>${esc(money(tt.sum))}</b></div>
+      <p class="note">${esc(input.reserve ? t('js.rc_reserve_note', { n: input.reserve }) : t('js.rc_no_reserve'))}</p>
       ${tt.unpriced ? `<p class="note">${esc(t('js.rc_unpriced', { n: tt.unpriced }))}</p>` : ''}
       ${tt.unconfirmed ? `<p class="note">* ${esc(t('js.rc_prelim'))}</p>` : ''}` : '';
     const buyable = res.lines.some((/** @type {any} */ l) => l.qty > 0 && byId(l.productId)?.variants.find((/** @type {any} */ x) => x.id === l.variantId)?.canBuy);

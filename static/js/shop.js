@@ -1,5 +1,6 @@
 // Общее поведение страниц: счётчики, «В корзину», сравнение, подсказки поиска, фильтры, метки рекламы.
-import { BASE, LANG, api, cart, compare, esc, money, t, toast, save, load } from './common.js';
+import { BASE, LANG, PREVIEW, api, cart, compare, esc, money, t, toast, save, load } from './common.js';
+import { initCompare } from './compare-rows.js';
 
 // ---- Счётчики в шапке ----
 function renderCounts() {
@@ -72,6 +73,9 @@ if (document.body.classList.contains('page-compare')) {
     }
     if (/** @type {HTMLElement} */ (e.target).closest('[data-compare-clear]')) { compare.set([]); location.href = `${BASE}/compare`; }
   });
+  // В демо-копии таблицу сначала перестраивает preview.js, он и настраивает строки
+  const table = /** @type {HTMLTableElement|null} */ (document.querySelector('.cmptable'));
+  if (table && !PREVIEW) initCompare(table);
 }
 
 // ---- Подсказки поиска ----
