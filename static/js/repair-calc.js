@@ -7,7 +7,7 @@ import { ceilUp, cheapestPack, largestPack } from './calc-packs.js';
 
 /** Готовые наборы работ */
 export const PRESETS = {
-  bath: { wet: true, heated: false, tile: { floor: true, walls: true }, primer: { on: true, floor: true, walls: true }, waterproof: { on: true }, tape: { on: true }, plaster: { on: false }, base: { on: false }, finish: { on: false }, grout: { on: true } },
+  bath: { wet: true, heated: false, tile: { floor: true, walls: true }, primer: { on: true, floor: true, walls: true }, waterproof: { on: true }, tape: { on: true, vertical: true }, plaster: { on: false }, base: { on: false }, finish: { on: false }, grout: { on: true } },
   floor: { wet: false, heated: false, tile: { floor: true, walls: false }, primer: { on: true, floor: true, walls: false }, waterproof: { on: false }, tape: { on: false }, plaster: { on: false }, base: { on: false }, finish: { on: false }, grout: { on: true } },
   walls: { wet: false, heated: false, tile: { floor: false, walls: false }, primer: { on: true, floor: false, walls: true }, waterproof: { on: false }, tape: { on: false }, plaster: { on: false }, base: { on: true }, finish: { on: true }, grout: { on: false } },
 };
@@ -53,7 +53,7 @@ export function conditionsFor(role, input) {
 }
 
 /** Можно ли посчитать количество по данным каталога @param {any} p @param {string} role */
-export const computable = (p, role) => role === 'grout' || !!p.calc;
+export const computable = (p, role) => !!p.calc && (role !== 'grout' || p.calc.type === 'coverage');
 
 /**
  * Кандидаты на работу: товар, итог проверки и проверка по каждому условию.
@@ -130,7 +130,9 @@ export function plan(input, products) {
     const opts = input[role === 'adhesive' ? 'tile' : role] || {};
     const cands = candidates(products, role, input);
     const usable = cands.filter((c) => c.fit !== 'no' && c.computable);
-    const chosen = usable.find((c) => c.p.id === Number(opts.productId)) || usable.find((c) => c.fit === 'yes');
+    // Затирку выбирают цветом: товар — тот, у которого есть выбранный цвет (матовая или глянцевая)
+    const byVariant = role === 'grout' ? usable.find((c) => c.p.variants.some((/** @type {any} */ v) => v.id === Number(opts.variantId))) : null;
+    const chosen = byVariant || usable.find((c) => c.p.id === Number(opts.productId)) || usable.find((c) => c.fit === 'yes');
     // Подходящие по условиям, но без данных расхода (например, C0) — упоминаем, но не считаем
     const noCalc = cands.filter((c) => c.fit === 'yes' && !c.computable).map((c) => c.p.id);
     if (!chosen) {
@@ -144,16 +146,25 @@ export function plan(input, products) {
     const calc = p.calc;
 
     if (role === 'grout') {
-      // Расход затирки зависит от размера плитки и ширины шва (таблица — на странице затирки): количество задаёт покупатель, по умолчанию — ничего
-      line.qty = clamp(Math.floor(Number(opts.qty) || 0), 0, 999);
-      line.manual = true;
+      // Затирка — по таблице производителя: сколько м² плитки закрывает 1 туба при таком размере плитки и ширине шва
+      const row = calc.rows?.[Number(opts.tile) || 0], perTube = row?.area?.[Number(opts.joint) || 0];
+      if (!(perTube > 0)) line.error = { code: 'no_calc' };
+      else {
+        const a = area.adhesive;
+        const need = a * k / perTube;
+        line.qty = ceil(need);
+        line.formula = { kind: 'coverage', area: a, k, perTube, tile: row.tile, joint: calc.widths[Number(opts.joint) || 0], need, unit: 'м²', pack: 1 };
+      }
     } else if (role === 'tape') {
-      const len = A.perimeter + 4 * overlap;
+      // Лента — по стыку пола и стен и в 4 вертикальных угла: на всю высоту стен (просьба заказчика, 22.11.2026)
+      // или только на высоту захода гидроизоляции
+      const corner = input.tape?.vertical === false ? overlap : (Number(input.room.height) || 0);
+      const len = A.perimeter + 4 * corner;
       if (variant.packUnit !== 'м') line.error = { code: 'pack_unit' };
       else {
         const need = len * k;
         line.qty = ceil(need / variant.amount);
-        line.formula = { kind: 'length', len, perimeter: A.perimeter, overlap, k, need, unit: 'м', pack: variant.amount };
+        line.formula = { kind: 'length', len, perimeter: A.perimeter, corner, k, need, unit: 'м', pack: variant.amount };
       }
     } else if (calc?.type === 'area_layers') {
       const layers = Math.round(Number(opts.layers) || calc.layers?.min || 1);

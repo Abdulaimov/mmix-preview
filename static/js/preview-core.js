@@ -48,8 +48,11 @@ function deliveryQuote(settings, method, itemsTotal, hasUnpriced, city) {
   if (method === 'pickup') return { method, mode: 'pickup', minor: 0 };
   const d = settings.delivery;
   if (d.cost_mode === 'free') {
-    if (city === null || inFreeZone(settings, city)) return { method, mode: 'free', minor: 0, zone: d.cities?.ru || '' };
-    return { method, mode: 'manager', minor: null, outsideZone: true };
+    if (city !== null && !inFreeZone(settings, city)) return { method, mode: 'manager', minor: null, outsideZone: true };
+    // Бесплатно от суммы заказа; меньше (или есть позиции без цены) — стоимость сообщит менеджер
+    const from = d.free_from_minor ?? null;
+    if (from !== null && (hasUnpriced || itemsTotal < from)) return { method, mode: 'manager', minor: null, freeFromMinor: from, leftMinor: hasUnpriced ? null : from - itemsTotal };
+    return { method, mode: 'free', minor: 0, freeFromMinor: from };
   }
   if (d.cost_mode === 'fixed' && d.fixed_minor != null) {
     if (d.free_from_minor != null && !hasUnpriced && itemsTotal >= d.free_from_minor) return { method, mode: 'free', minor: 0 };

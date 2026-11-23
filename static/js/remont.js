@@ -56,7 +56,7 @@ function init(form) {
     set('wet', p.wet); set('heated', p.heated);
     set('tile_on', p.tile.floor || p.tile.walls); set('tile_floor', p.tile.floor); set('tile_walls', p.tile.walls);
     set('primer_on', p.primer.on); set('primer_floor', p.primer.floor); set('primer_walls', p.primer.walls);
-    set('wp_on', p.waterproof.on); set('tape_on', p.tape.on);
+    set('wp_on', p.waterproof.on); set('tape_on', p.tape.on); if (p.tape.vertical !== undefined) set('tape_vertical', p.tape.vertical);
     set('plaster_on', p.plaster.on); set('base_on', p.base.on); set('finish_on', p.finish.on); set('grout_on', p.grout.on);
   }
 
@@ -67,11 +67,11 @@ function init(form) {
       tile: { floor: on('tile_on') && on('tile_floor'), walls: on('tile_on') && on('tile_walls'), size: val('tile_size'), mm: val('adh_mm'), productId: val('adh_product') },
       primer: { on: on('primer_on'), floor: on('primer_floor'), walls: on('primer_walls'), layers: val('primer_layers') },
       waterproof: { on: on('wp_on'), overlapCm: val('wp_overlap'), showerM2: val('wp_shower'), layers: val('wp_layers'), layerMm: val('wp_mm') },
-      tape: { on: on('tape_on') },
+      tape: { on: on('tape_on'), vertical: on('tape_vertical') },
       plaster: { on: on('plaster_on'), mm: val('plaster_mm'), productId: val('plaster_product') },
       base: { on: on('base_on'), mm: val('base_mm'), productId: val('base_product') },
       finish: { on: on('finish_on'), mm: val('finish_mm'), productId: val('finish_product') },
-      grout: { on: on('grout_on'), variantId: val('grout_variant'), qty: val('grout_qty') },
+      grout: { on: on('grout_on'), variantId: val('grout_variant'), tile: val('grout_tile'), joint: val('grout_joint') },
     };
   }
 
@@ -104,7 +104,8 @@ function init(form) {
     const kk = num(f.k, 2);
     if (f.kind === 'thickness') return `${num(f.area)} м² × ${num(f.mm)} мм × ${num(f.rate, 2)} кг/м²·мм${f.layers > 1 ? ` × ${f.layers}` : ''} × ${kk} = ${num(f.need)} кг → ${num(f.need)} ÷ ${num(f.pack)} = ${num(f.need / f.pack, 2)} → <b>${l.qty}</b>`;
     if (f.kind === 'layers') return `${num(f.area)} м² × ${f.layers} × ${f.rateMin}–${f.rateMax} мл/м² × ${kk} = ${num(f.min)}–${num(f.max)} л → ÷ ${num(f.pack)} → <b>${l.qtyMin === l.qty ? l.qty : `${l.qtyMin}–${l.qty}`}</b>`;
-    return `(${num(f.perimeter)} м + 4 × ${num(f.overlap, 2)} м) × ${kk} = ${num(f.need)} м → ÷ ${num(f.pack)} = ${num(f.need / f.pack, 2)} → <b>${l.qty}</b>`;
+    if (f.kind === 'coverage') return `${num(f.area)} м² × ${kk} ÷ ${num(f.perTube)} ${esc(t('js.rc_per_tube', { tile: f.tile, joint: num(f.joint) }))} = ${num(f.need, 2)} → <b>${l.qty}</b>`;
+    return `(${num(f.perimeter)} м + 4 × ${num(f.corner, 2)} м) × ${kk} = ${num(f.need)} м → ÷ ${num(f.pack)} = ${num(f.need / f.pack, 2)} → <b>${l.qty}</b>`;
   }
 
   /** @param {any} input */
@@ -139,10 +140,10 @@ function init(form) {
       let qty = '';
       if (l.error) qty = `<p class="rcline__err">${esc(l.error.code === 'thickness' ? t('js.rc_err_thickness', { range: [l.error.min, l.error.max].map((x) => (x == null ? '…' : num(x))).join('–') })
         : l.error.code === 'layers' ? t('js.rc_err_layers', { range: `${l.error.min}–${l.error.max}` }) : t('js.rc_err_other'))}</p>`;
-      else if (l.manual) qty = `<div class="rcline__qty"><div class="qty qty--sm"><button type="button" class="qty__btn" data-grout-step="-1" aria-label="−">−</button><b class="rcline__n">${l.qty}</b><button type="button" class="qty__btn" data-grout-step="1" aria-label="+">+</button></div> × ${esc(packLabel(v))}</div><p class="rcline__hint">${esc(t('js.rc_grout_manual'))}</p>`;
       else {
         const f = l.formula;
-        const need = f.kind === 'layers' ? t('js.calc_range', { min: num(f.min), max: num(f.max) }) : num(f.need);
+        // У затирки — площадь плитки с запасом (сколько туб, видно в количестве)
+        const need = f.kind === 'layers' ? t('js.calc_range', { min: num(f.min), max: num(f.max) }) : f.kind === 'coverage' ? num(f.area * f.k) : num(f.need);
         const bump = prevQty[l.role] !== undefined && prevQty[l.role] !== l.qty ? ' is-bump' : '';
         qty = `<div class="rcline__qty"><b class="rcline__n${bump}">${l.qtyMin != null && l.qtyMin !== l.qty ? `${l.qtyMin}–${l.qty}` : l.qty}</b> × ${esc(packLabel(v))} <span class="rcline__need">≈ ${need} ${f.unit}</span></div>
           <details class="rcline__how"><summary>${esc(t('js.calc_formula'))}</summary><div class="calc__formula">${formula(l)}</div></details>`;
@@ -214,13 +215,6 @@ function init(form) {
   let timer = 0;
   form.addEventListener('input', () => { clearTimeout(timer); timer = window.setTimeout(sync, 120); });
   form.addEventListener('submit', (e) => e.preventDefault());
-
-  linesBox.addEventListener('click', (e) => {
-    const b = /** @type {HTMLElement} */ (e.target).closest('[data-grout-step]');
-    if (!b || !el('grout_qty')) return;
-    el('grout_qty').value = String(Math.max(0, Math.min(999, val('grout_qty') + Number(/** @type {HTMLElement} */ (b).dataset.groutStep))));
-    sync();
-  });
 
   const buyLines = () => (last?.res.lines || []).map((/** @type {any} */ l) => ({ l, v: byId(l.productId)?.variants.find((/** @type {any} */ x) => x.id === l.variantId) }))
     .filter((/** @type {any} */ x) => x.l.qty > 0 && x.v?.canBuy);

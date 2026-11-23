@@ -9,10 +9,12 @@ const cookie = (/** @type {string} */ name) => document.cookie.split('; ').find(
 function summaryRows(q, cashback) {
   const n = q.lines.reduce((s, /** @type {any} */ l) => s + l.qty, 0);
   const delivery = q.delivery.mode === 'pickup' ? t('js.pickup') : q.delivery.outsideZone ? t('js.delivery_outside') : q.delivery.minor === null ? t('js.delivery_manager')
-    : q.delivery.minor === 0 ? (q.delivery.zone ? t('js.free_zone', { zone: q.delivery.zone }) : t('js.free')) : money(q.delivery.minor);
+    : q.delivery.minor === 0 ? t('js.free') : money(q.delivery.minor);
+  const left = q.delivery.leftMinor > 0 ? `<p class="note summary__free">${esc(t('js.free_left', { sum: money(q.delivery.leftMinor) }))}</p>` : '';
   return `<div><dt>${esc(t('js.items_n', { n }))}</dt><dd>${money(q.itemsTotalMinor)}${q.hasUnpriced ? ` + ${esc(t('js.price_on_request'))}` : ''}</dd></div>
     <div><dt>${esc(t('js.delivery'))}</dt><dd>${esc(delivery)}</dd></div>
     <div class="summary__total"><dt>${esc(t('js.total'))}</dt><dd>${q.totalMinor === null ? esc(t('js.total_pending')) : money(q.totalMinor)}</dd></div>
+    ${left}
     ${q.hasUnconfirmed ? `<p class="note">${esc(t('js.preliminary'))}</p>` : ''}
     ${cashback ? `<p class="note">${esc(cashback)}</p>` : ''}`;
 }
@@ -177,6 +179,7 @@ if (form) {
       idempotencyKey: key, lang: LANG,
       items: cart.items().map((i) => ({ variantId: i.variantId, qty: i.qty, seenPriceMinor: quote?.lines.find((/** @type {any} */ l) => l.variantId === i.variantId)?.unitPriceMinor ?? i.seenPriceMinor ?? null })),
       name: f.get('name'), phone: phoneValue(String(f.get('phone') || '')), deliveryMethod: method(), city: f.get('city'), address: f.get('address'),
+      pickupPartnerId: method() === 'pickup' ? Number(f.get('pickupPartnerId') ?? -1) : null,
       comment: f.get('comment'), paymentMethod: f.get('paymentMethod'), website: f.get('website'),
       refCode: ref.confirmed ? ref.code : '', refConfirmed: ref.confirmed, source: load('mm_src', {}),
     };

@@ -29,8 +29,10 @@ export function initCompare(table) {
   const toggle = /** @type {HTMLButtonElement|null} */ (document.querySelector('[data-cmp-toggle]'));
   const rows = [...body.rows].filter((r) => r.dataset.cmp);
   const data = rows.map((r) => ({ kind: String(r.dataset.cmp), label: (r.cells[0].textContent || '').trim(), values: [...r.cells].slice(1).map(cellValue) }));
-  const simple = simpleRows(data);
-  const empty = data.map((d) => d.values.every((x) => x === null));
+  // Фасовка видна и в шапке столбца (цена «за мешок 25 кг»), отдельная строка нужна, только если у товара их несколько
+  const single = rows.map((r) => r.dataset.cmpPack !== undefined && ![...r.cells].slice(1).some((c) => Number(c.dataset.n) > 1));
+  const simple = simpleRows(data).map((s, i) => s && !single[i]);
+  const empty = data.map((d, i) => single[i] || d.values.every((x) => x === null));
   const hasSimple = simple.some(Boolean);
   const hasMore = rows.some((_, i) => !simple[i] && !empty[i]);
   const render = (/** @type {boolean} */ all) => {
